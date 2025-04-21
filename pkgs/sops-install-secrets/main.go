@@ -1327,7 +1327,7 @@ func installSecrets(args []string) error {
 	// Import age keys
 	if len(manifest.AgeSSHKeyPaths) != 0 || manifest.AgeKeyFile != "" {
 		keyfile := filepath.Join(manifest.SecretsMountPoint, "age-keys.txt")
-		os.Setenv("SOPS_AGE_KEY_FILE", keyfile)
+		os.Setenv("SOPS_AGE_SSH_PRIVATE_KEY_FILE", keyfile)
 		// Create the keyfile
 		var ageFile *os.File
 		ageFile, err = os.OpenFile(keyfile, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0o600)
